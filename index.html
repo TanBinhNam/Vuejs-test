@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue Mastery</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="../training/src/assets/styles.css" />
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="nav-bar"></div>
+
+      <div class="cart">Cart({{ cartCount }})</div>
+
+      <button class="button delete" id="delete" @click="deleteCart">Delete to Cart</button>
+
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <a :href='imageLink' target="_blank"><img :src='image' :class="[onSale ? '' : 'out-of-stock-img']"></a>
+          </div>
+    
+          <div class="product-info">
+            <h1>{{product}}</h1>
+            <p v-if="onSale" :class="green">On Sale</p>
+            <p v-else :class="red">Stop Sale</p>
+            <p v-if="inventory >= 11">In Stock</p>
+            <p v-else-if="inventory <= 10 && inventory > 0">Some</p>
+            <p v-else>Out Of Stock</p>
+            <p>{{description}}
+                <ul>
+                  <li v-for="each in detailsMaterial">
+                    {{ each }}
+                  </li>
+                </ul>
+
+            </p>
+            <p>Color:</p>
+            <div v-for="each in variants" 
+            :key="each.id" 
+            class="color-circle" 
+            :style="{ 'background-color': each.color }"
+            @click="changeImage(each.image)"
+            >
+   
+                <!-- <button @click="changeImage(each.image)">X</button> -->
+            </div>
+            <p>Size:</p>
+            <div v-for="each in sizes" :key="each.id">
+              {{ each.size }}
+             
+          </div>
+
+          <button 
+          class="button"
+          :disabled="inventory <= 0"
+          @click="addToCart"
+          :class="{ disabledButton: inventory <= 0}"
+          >Add to Cart</button>
+
+     
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Import Js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="./vue-training.js"></script>
+
+    <script>
+      const mountedApp = app.mount('#app');
+      document.getElementById('delete').addEventListener('click', displayDate);
+
+function displayDate() {
+ 
+}
+      
+ 
+    </script>
+  </body>
+</html>
