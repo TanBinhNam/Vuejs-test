@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue Mastery</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="../training/src/assets/styles.css" />
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="nav-bar"></div>
+
+      <div class="cart">Cart({{ cart.length }})</div>
+
+      
+
+
+      <product-display :premium="premium" @add-to-cart="updateCart" :cart="cart" @delete-cart="deleteCart"></product-display>
+
+
+    </div>
+
+     
+
+    <!-- Import Js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="./vue-training.js"></script>
+
+    <!-- Import Components -->
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetail.js"></script>
+    <script src="./components/ProductProperty.js"></script>
+    <script src="./components/ProductStatus.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>
+    <script>
+      const mountedApp = app.mount('#app');
+    </script>
+  </body>
+</html>
